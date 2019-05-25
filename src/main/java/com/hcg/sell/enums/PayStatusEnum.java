@@ -1,11 +1,11 @@
-package com.hcg.sell.eunms;
+package com.hcg.sell.enums;
 
 import lombok.Getter;
 
 /**
  * @program: sell
  *
- * @description: 订单状态
+ * @description: 支付状态
  *
  * @author: hcg
  *
@@ -16,17 +16,18 @@ import lombok.Getter;
  * @updated:
  **/
 @Getter
-public enum OrderStatusEnum implements CodeEnum {
-    NEW(0, "新订单"),
-    FINISHED(1, "完结"),
-    CANCEL(2, "已取消"),
+public enum PayStatusEnum implements CodeEnum {
+
+    WAIT(0, "等待支付"),
+    SUCCESS(1, "支付成功"),
+
     ;
 
     private Integer code;
 
     private String message;
 
-    OrderStatusEnum(Integer code, String message) {
+    PayStatusEnum(Integer code, String message) {
         this.code = code;
         this.message = message;
     }

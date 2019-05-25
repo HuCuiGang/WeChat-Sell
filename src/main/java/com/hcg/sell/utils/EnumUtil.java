@@ -1,7 +1,7 @@
 package com.hcg.sell.utils;
 
 
-import com.hcg.sell.eunms.CodeEnum;
+import com.hcg.sell.enums.CodeEnum;
 
 /**
  * @program: sell

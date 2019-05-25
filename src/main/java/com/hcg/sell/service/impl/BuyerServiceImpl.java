@@ -1,7 +1,7 @@
 package com.hcg.sell.service.impl;
 
 import com.hcg.sell.dto.OrderDTO;
-import com.hcg.sell.eunms.ResultEunm;
+import com.hcg.sell.enums.ResultEnum;
 import com.hcg.sell.exception.SellException;
 import com.hcg.sell.service.BuyerService;
 import com.hcg.sell.service.OrderService;
@@ -29,7 +29,7 @@ public class BuyerServiceImpl implements BuyerService{
         OrderDTO orderDTO = checkOrderOwner(openid, orderId);
         if (orderDTO==null){
             log.error("【查询订单】查不到该订单,orderid={}",orderId);
-            throw new SellException(ResultEunm.ORDER_NOT_EXIST);
+            throw new SellException(ResultEnum.ORDER_NOT_EXIST);
         }
         return orderDTO;
     }
@@ -41,7 +41,7 @@ public class BuyerServiceImpl implements BuyerService{
         //判断是否是自己的订单
         if (!orderDTO.getBuyerOpenid().equalsIgnoreCase(openid)){
             log.error("【查询订单】订单的openid不一致,openid={},orderDTO={}",openid,orderDTO);
-            throw new SellException(ResultEunm.ORDER_OWNER_ERROP);
+            throw new SellException(ResultEnum.ORDER_OWNER_ERROP);
         }
         return orderDTO;
     }
@@ -51,7 +51,7 @@ public class BuyerServiceImpl implements BuyerService{
         OrderDTO orderDTO = checkOrderOwner(openid, orderId);
         if (orderDTO==null){
             log.error("【查询订单】查不到该订单,orderid={}",orderId);
-            throw new SellException(ResultEunm.ORDER_NOT_EXIST);
+            throw new SellException(ResultEnum.ORDER_NOT_EXIST);
         }
         return orderService.cancel(orderDTO);
     }

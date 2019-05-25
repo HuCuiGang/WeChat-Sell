@@ -1,13 +1,13 @@
 package com.hcg.sell.service.impl;
 
 import com.hcg.sell.dataObject.OrderDetail;
-import com.hcg.sell.dto.CartDTO;
 import com.hcg.sell.dto.OrderDTO;
-import com.hcg.sell.eunms.OrderStatusEnum;
-import com.hcg.sell.eunms.PayStatusEnum;
+import com.hcg.sell.enums.OrderStatusEnum;
+import com.hcg.sell.enums.PayStatusEnum;
 import com.hcg.sell.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +15,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Slf4j
+
 public class OrderServiceImplTest {
 
     @Autowired
@@ -33,7 +31,6 @@ public class OrderServiceImplTest {
     private final String ORDER_ID = "1558332345188139736";
 
     @Test
-
     public void create() {
         OrderDTO orderDTO = new OrderDTO();
         orderDTO.setBuyerName("晓霞");
@@ -94,5 +91,11 @@ public class OrderServiceImplTest {
         OrderDTO orderDTO = orderService.findByOrderId(ORDER_ID);
         OrderDTO result = orderService.paid(orderDTO);
         Assert.assertEquals(PayStatusEnum.SUCCESS.getCode(),result.getPayStatus());
+    }
+    @Test
+    public void list(){
+        Page<OrderDTO> orderDTOPage = orderService.findList(PageRequest.of(0, 10));
+        //Assert.assertNotEquals(0,orderDTOPage.getTotalElements());
+        Assert.assertTrue("【查询所有的订单】没查到",orderDTOPage.getTotalElements() > 0);
     }
 }

@@ -1,9 +1,7 @@
 package com.hcg.sell.exception;
 
-import com.hcg.sell.eunms.ResultEunm;
+import com.hcg.sell.enums.ResultEnum;
 import lombok.Getter;
-
-import javax.persistence.criteria.CriteriaBuilder;
 
 /**
  * @program: sell
@@ -18,9 +16,9 @@ public class SellException extends RuntimeException {
 
     private Integer code;
 
-    public SellException(ResultEunm resultEunm) {
-        super(resultEunm.getMessage());
-        this.code = resultEunm.getCode();
+    public SellException(ResultEnum resultEnum) {
+        super(resultEnum.getMessage());
+        this.code = resultEnum.getCode();
     }
 
     public SellException(Integer code,String message) {

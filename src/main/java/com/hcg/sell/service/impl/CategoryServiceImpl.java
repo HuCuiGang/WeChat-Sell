@@ -1,7 +1,7 @@
 package com.hcg.sell.service.impl;
 
 import com.hcg.sell.dataObject.ProductCategory;
-import com.hcg.sell.eunms.ResultEunm;
+import com.hcg.sell.enums.ResultEnum;
 import com.hcg.sell.exception.SellException;
 import com.hcg.sell.repository.ProductCategoryRepository;
 import com.hcg.sell.service.CategoryService;
@@ -29,7 +29,7 @@ public class CategoryServiceImpl implements CategoryService {
     public ProductCategory findById(Integer id) {
         Optional<ProductCategory> optionalProductCategory = productCategoryRepository.findById(id);
         if (!optionalProductCategory.isPresent()){
-            throw new SellException(ResultEunm.PRODUCTCATEGORY_NOT_EXIST);
+            throw new SellException(ResultEnum.PRODUCTCATEGORY_NOT_EXIST);
         }
         return optionalProductCategory.get();
     }

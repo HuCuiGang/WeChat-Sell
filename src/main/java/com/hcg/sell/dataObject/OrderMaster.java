@@ -1,8 +1,8 @@
 package com.hcg.sell.dataObject;
 
 
-import com.hcg.sell.eunms.OrderStatusEnum;
-import com.hcg.sell.eunms.PayStatusEnum;
+import com.hcg.sell.enums.OrderStatusEnum;
+import com.hcg.sell.enums.PayStatusEnum;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 

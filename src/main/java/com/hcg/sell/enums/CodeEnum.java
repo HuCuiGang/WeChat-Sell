@@ -1,4 +1,4 @@
-package com.hcg.sell.eunms;
+package com.hcg.sell.enums;
 
 /**
  * Created by 廖师兄

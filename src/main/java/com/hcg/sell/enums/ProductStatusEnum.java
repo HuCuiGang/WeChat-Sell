@@ -1,4 +1,4 @@
-package com.hcg.sell.eunms;
+package com.hcg.sell.enums;
 
 import lombok.Getter;
 
@@ -16,16 +16,16 @@ import lombok.Getter;
  * @updated:
  **/
 @Getter
-public enum ProductStatusEunm {
+public enum ProductStatusEnum implements CodeEnum {
 
-    UP(0,"上架"),
+    UP(0,"在架"),
     DOWN(1,"下架")
     ;
     private Integer code;
-    private String msg;
+    private String message;
 
-    ProductStatusEunm(Integer code, String msg) {
+    ProductStatusEnum(Integer code, String message) {
         this.code = code;
-        this.msg = msg;
+        this.message = message;
     }
 }

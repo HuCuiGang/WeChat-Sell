@@ -3,7 +3,7 @@ package com.hcg.sell.controller;
 import com.hcg.sell.VO.ResultVO;
 import com.hcg.sell.converter.OrderFrom2OrderDTOConverter;
 import com.hcg.sell.dto.OrderDTO;
-import com.hcg.sell.eunms.ResultEunm;
+import com.hcg.sell.enums.ResultEnum;
 import com.hcg.sell.exception.SellException;
 import com.hcg.sell.form.OrderForm;
 import com.hcg.sell.service.BuyerService;
@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.hcg.sell.eunms.ResultEunm.*;
+import static com.hcg.sell.enums.ResultEnum.*;
 
 /**
  * @program: sell
@@ -75,7 +75,7 @@ public class BuyerOrderController {
                                          @RequestParam(value = "size", defaultValue = "10") Integer size) {
         if (StringUtils.isEmpty(openid)) {
             log.error("【查询订单列表】openid为空");
-            throw new SellException(ResultEunm.PARAM_ERROR.getCode(), "openid为空");
+            throw new SellException(ResultEnum.PARAM_ERROR.getCode(), "openid为空");
         }
         Page<OrderDTO> orderDTOPage = orderService.findList(openid, PageRequest.of(page, size));
 
@@ -89,11 +89,11 @@ public class BuyerOrderController {
 
         if (StringUtils.isEmpty(openid)) {
             log.error("【查询订单详情】openid为空");
-            throw new SellException(ResultEunm.PARAM_ERROR.getCode(), "openid不能为空");
+            throw new SellException(ResultEnum.PARAM_ERROR.getCode(), "openid不能为空");
         }
         if (StringUtils.isEmpty(orderid)) {
             log.error("【查询订单详情】orderid");
-            throw new SellException(ResultEunm.PARAM_ERROR.getCode(), "orderid不能为空");
+            throw new SellException(ResultEnum.PARAM_ERROR.getCode(), "orderid不能为空");
         }
         //不安全的做法,需改进
         /*OrderDTO orderDTO = orderService.findByOrderId(orderid);*/

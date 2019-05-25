@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.hcg.sell.dataObject.OrderDetail;
 import com.hcg.sell.dto.OrderDTO;
-import com.hcg.sell.eunms.ResultEunm;
+import com.hcg.sell.enums.ResultEnum;
 import com.hcg.sell.exception.SellException;
 import com.hcg.sell.form.OrderForm;
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +38,7 @@ public class OrderFrom2OrderDTOConverter {
                     new TypeToken<List<OrderDetail>>(){}.getType());
         }catch (Exception e){
             log.error("【对象转换错误】错误,string={}",orderForm.getItems());
-            throw new SellException(ResultEunm.PARAM_ERROR);
+            throw new SellException(ResultEnum.PARAM_ERROR);
         }
 
         orderDTO.setOrderDetailList(orderDetailList);
